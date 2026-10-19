@@ -1,1 +1,38 @@
-body{width:310px;margin:0;padding:24px;background:#101c20;color:#eef4ed;font:15px/1.5 system-ui}h1{margin:0}a{color:#9be6c1;display:block;margin:9px 0}label{display:block;margin:10px 0}input,select,button{font:inherit}button{background:#9be6c1;border:0;padding:8px 15px;border-radius:6px}fieldset{margin:20px 0;border-color:#49635c}small{color:#b8cac1}
+body {
+  width: 310px;
+  margin: 0;
+  padding: 24px;
+  background: #101c20;
+  color: #eef4ed;
+  font: 15px/1.5 system-ui;
+}
+h1 {
+  margin: 0;
+}
+a {
+  color: #9be6c1;
+  display: block;
+  margin: 9px 0;
+}
+label {
+  display: block;
+  margin: 10px 0;
+}
+input,
+select,
+button {
+  font: inherit;
+}
+button {
+  background: #9be6c1;
+  border: 0;
+  padding: 8px 15px;
+  border-radius: 6px;
+}
+fieldset {
+  margin: 20px 0;
+  border-color: #49635c;
+}
+small {
+  color: #b8cac1;
+}

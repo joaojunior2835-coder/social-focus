@@ -1,1 +1,7 @@
-html:not([data-sf-ready]){visibility:hidden!important} a[data-sf-link]{visibility:hidden!important;pointer-events:none!important}
+html:not([data-sf-ready]) {
+  visibility: hidden !important;
+}
+a[data-sf-link] {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
