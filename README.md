@@ -1,7 +1,7 @@
 # Social Focus
 Intentional Instagram and TikTok browsing: messages, profiles and creation without consumption feeds.
 
-**IN PROGRESS. Physical iPhone installation and authenticated workflows are unverified.**
+**ENGINEERING READY — DEVICE VALIDATION PENDING. Physical iPhone installation, Safari filtering and authenticated workflows remain unverified.**
 Original Instagram/TikTok iPhone apps are outside our control. Protection applies only inside the Social Focus browser or enabled browser extensions.
 
 Source and builds live on GitHub. No backend, analytics, subscription, permanent Windows development folder, or paid signing required by the project.
@@ -10,6 +10,8 @@ Source and builds live on GitHub. No backend, analytics, subscription, permanent
 - Desktop: download the Chromium ZIP from a passing [Actions run](../../actions), extract, open `chrome://extensions` or `edge://extensions`, enable Developer mode, choose Load unpacked and select the extracted directory containing manifest.json.
 - iPhone: the **UNSIGNED** IPA must be signed on your Windows computer/device using AltStore Classic. Downloading it does not install it. See [Windows installation and refresh](docs/INSTALL.md).
 - Safari: separate experimental target/package; personal signing, permissions and actual filtering remain pending physical-device validation. See [feasibility](docs/FEASIBILITY.md).
+
+[Passing engineering evidence](docs/EVIDENCE.md) records actual tests, source SHA and artifact links.
 
 ## Evidence and maintenance
 [Feature matrix](docs/ACCEPTANCE.md) · [Progress](PROGRESS.md) · [Architecture](docs/ARCHITECTURE.md) · [Feasibility](docs/FEASIBILITY.md) · [Rule maintenance](docs/MAINTENANCE.md) · [Third-party audit](THIRD_PARTY_NOTICES.md).

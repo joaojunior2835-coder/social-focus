@@ -1,0 +1,81 @@
+{
+  "status": "ENGINEERING READY \u2014 DEVICE VALIDATION PENDING",
+  "sourceCommit": "f11ece4a5cd6cf3e00b843861afccb72d41189fe",
+  "run": "https://github.com/joaojunior2835-coder/social-focus/actions/runs/39336275940",
+  "unitTests": {
+    "passed": 56,
+    "failed": 0
+  },
+  "browserTests": {
+    "startTime": "2026-10-19T22:38:31.881Z",
+    "duration": 7633.798000000001,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser": {
+    "browser": "141.0.7390.37",
+    "actualExtension": true,
+    "fixtureOriginIntercepted": true,
+    "commit": "f11ece4a5cd6cf3e00b843861afccb72d41189fe"
+  },
+  "nativeBridge": {
+    "casesPassed": 8,
+    "commit": "f11ece4a5cd6cf3e00b843861afccb72d41189fe",
+    "physicalIPhone": false,
+    "runtime": "macOS JavaScriptCore native bridge"
+  },
+  "simulator": {
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+    "device": "iPhone 16",
+    "udid": "F0E646EF-4792-4F36-B48B-EC89B3A6B73B",
+    "physicalDevice": false,
+    "releaseAppLaunched": true,
+    "developmentServer": false,
+    "commit": "f11ece4a5cd6cf3e00b843861afccb72d41189fe"
+  },
+  "livePublic": {
+    "date": "2026-10-19T22:38:38.853Z",
+    "commit": "f11ece4a5cd6cf3e00b843861afccb72d41189fe",
+    "results": [
+      {
+        "case": "blocked-route",
+        "platform": "instagram",
+        "status": "route-gate-visible",
+        "httpStatus": 200,
+        "authenticated": false
+      },
+      {
+        "case": "blocked-route",
+        "platform": "tiktok",
+        "status": "route-gate-visible",
+        "httpStatus": 200,
+        "authenticated": false
+      },
+      {
+        "case": "login-page",
+        "platform": "instagram",
+        "status": "network-or-platform-unavailable",
+        "httpStatus": null,
+        "authenticated": false
+      }
+    ],
+    "limitation": "Unauthenticated network/route smoke only; no messaging, posting or logged-in feed compatibility established."
+  },
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "artifacts": {
+    "iPhone-UNSIGNED-and-evidence-f11ece4a5cd6cf3e00b843861afccb72d41189fe": "https://github.com/joaojunior2835-coder/social-focus/actions/runs/39336275940/artifacts/12227026692",
+    "Chromium-and-evidence-f11ece4a5cd6cf3e00b843861afccb72d41189fe": "https://github.com/joaojunior2835-coder/social-focus/actions/runs/39336275940/artifacts/12226489017"
+  },
+  "physicalIPhoneTested": false,
+  "authenticatedWorkflowsTested": false,
+  "safariInstalledOrTested": false
+}

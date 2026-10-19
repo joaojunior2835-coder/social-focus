@@ -1,14 +1,14 @@
 # Acceptance ledger
-Status: IN PROGRESS. See Actions evidence artifacts for exact source SHA, environment/browser versions, executable test results and public live checks. Do not extrapolate from a passing fixture to the live service.
+Status: ENGINEERING READY — DEVICE VALIDATION PENDING. See Actions evidence artifacts for exact source SHA, environment/browser versions, executable test results and public live checks. Do not extrapolate from a passing fixture to the live service.
 
 | Capability | Desktop fixtures | Live authenticated | iPhone browser | iPhone Safari |
 |---|---|---|---|---|
-| Instagram home/Reels/Stories/Explore/direct links | Executable suite | Pending | Pending | Pending |
-| TikTok feeds/video/photo/Stories/direct/short links | Executable suite | Pending | Pending | Pending |
-| SPA, back/forward, refresh, inserted overlays | Executable suite | Pending | Pending | Pending |
-| Profiles and account-handle lookup | Fixture route/UI | Pending | Pending | Pending |
+| Instagram home/Reels/Stories/Explore/direct links | Passed in CI fixtures | Pending | Pending | Pending |
+| TikTok feeds/video/photo/Stories/direct/short links | Passed in CI fixtures | Pending | Pending | Pending |
+| SPA, back/forward, refresh, inserted overlays | Passed in CI fixtures | Pending | Pending | Pending |
+| Profiles and account-handle lookup | Passed route fixtures | Pending | Pending | Pending |
 | DMs/settings/account switching | Route preservation fixtures only | Pending real workflows | Pending | Pending |
-| Upload selection/preview | Synthetic local draft fixture | Pending supported web workflow | Pending | Pending |
+| Upload selection/preview | Passed synthetic selection/decode/playback | Pending supported web workflow | Pending | Pending |
 | Posting and actual delivery of DMs | Not sent | Requires explicit approval | Pending | Pending |
 | Login/session persistence | Not established by fixtures | Pending | Pending restart/refresh | Pending |
 | Device target build | CI | N/A | See actual run | Separate target CI |
@@ -26,3 +26,5 @@ Record source SHA, IPA checksum, iPhone model, iOS version, AltServer/AltStore v
 8. Separately install Safari package, retain extension, enable permissions for both sites, and repeat filtering/navigation/draft tests in real iPhone Safari. WebKit/Chromium fixtures are not Safari extension tests.
 
 Native applications remain unfiltered. If a platform requires its native app, any external handoff is deliberately user-confirmed and explicitly unfiltered.
+
+Latest measured engineering results: [EVIDENCE.md](EVIDENCE.md). Native iPhone and Safari physical tests remain pending; a passing fixture does not validate authenticated platform workflows.

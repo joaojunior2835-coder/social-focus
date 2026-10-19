@@ -1,18 +1,20 @@
 # Progress — 2026-10-20
-Status: IN PROGRESS.
+Status: ENGINEERING READY — DEVICE VALIDATION PENDING.
 
-- Verified CLI and connector identity joaojunior2835-coder. CLI scopes include repo and workflow; new public repository creation succeeded; repository admin/push and Actions enabled confirmed.
-- No local repository checkout or permanent Windows development project is used. Temporary operator scripts submit source directly to GitHub; compilation and browser tests run in public Actions runner checkouts.
-- Official documentation and reference source inspected (see FEASIBILITY and THIRD_PARTY_NOTICES).
-- Implementation and evidence are being developed on codex/implementation.
-- Pending: CI/build evidence, live-site checks, authenticated workflows, physical iPhone signing/install/launch/session/refresh and Safari validation.
+Implementation is committed. Tested source: `f11ece4a5cd6cf3e00b843861afccb72d41189fe`.
+Passing applicable CI: https://github.com/joaojunior2835-coder/social-focus/actions/runs/39336275940
+Evidence: docs/EVIDENCE.md and docs/evidence/engineering.json.
 
-An external blocker is not completion. Next action: execute cloud tests/device builds and fix failures.
+Delivered: shared TypeScript filters; MV3 Chromium extension; independent SwiftUI/WKWebView browser; separate Safari target; pinned cloud builds; unsigned ARM64 iOS device IPAs; checksums; Windows installation/refresh documentation; MIT license and reference/dependency audit. No permanent Windows development checkout, paid runner, paid signing service, backend or added AI API usage.
 
-Cloud bootstrap succeeded; dependency audit reported zero known vulnerabilities. First validation exposed a formatting issue. Upload previews are being narrowed to file-input creation containers, with a real synthetic WebM selection/decode/playback test and unrelated-video rejection. Safari packaging omits its unused service worker. Device-target build result pending.
+Validation: 56 unit tests, 10 browser tests, 8 native bridge assertions; both device builds/package inspection; standalone release launch in iPhone Simulator; public unauthenticated route gates on both sites. Zero known dependency vulnerabilities at the recorded run.
 
-Both unsigned physical-device targets compiled and package inspection passed at c540f48e5cde1013b5ff27ecd1b3754e1ceefbe0 (Xcode 16.4 / iPhoneOS 18.5). Browser unit/reference tests and 7/8 integration tests passed. The generated single-frame draft fixture ended immediately; replacing with multi-frame synthetic media while retaining preview playback and unrelated-video assertions. Public live route-gate smoke observed Instagram/TikTok HTTP 200 destinations; Instagram login network check was unavailable. No authenticated compatibility claim. Physical acceptance tracked in issues #1 and #2.
+Reference probes reproduced missing TikTok story coverage in FocusTube's pinned classifier and lack of individual-Reel matching in OpenSocials' pinned Reels redirect list. Our tests cover those independently. No upstream source/assets were copied.
 
-Native macOS JavaScriptCore bridge assertions passed (same pure classifier invocation as the iPhone host); this is not a physical iPhone test. Strengthened artifact inspection to assert ARM64 iOS-device Mach-O platform and every Safari manifest resource. Public live assertions are kept outside network-error handling so protection regressions cannot be reported as mere network unavailability.
+Remaining external gates:
+1. User installs AltServer/AltStore and personally signs/installs browser-only IPA (issue #1). Exact iPhone model/iOS remains unknown. Registry inventory did not find AltServer/iTunes; iCloud Outlook alone does not establish installer prerequisites.
+2. User authenticates directly and validates sessions, DMs/profiles/settings/account switching and supported draft/upload flows. No real message/post without separate approval.
+3. User verifies signing/installation/permissions and actual filtering for the separate Safari extension (issue #2). If unsupported, an explicit scope decision is required.
+4. User verifies refresh/re-signing and its effect on session data, plus network/restart recovery.
 
-Added a release-mode iPhone Simulator install/standalone-launch check on the standard macOS runner, explicitly separate from physical signing/install acceptance. Development branch builds are dispatched explicitly; main/PR path-filtered CI remains automatic to avoid duplicate runs during formatting updates.
+This is not COMPLETE. Original native apps cannot be selectively modified through an established public API. All further product acceptance depends on a physical device and authenticated user interaction; no credentials or pairing/signing material belong in GitHub or CI.
