@@ -1,0 +1,63 @@
+name: Validate and package Social Focus
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, 'codex/**']
+    paths: ['packages/**', 'extensions/**', 'apps/**', 'scripts/**', 'tests/**', 'package*.json', '*config*', '.github/workflows/ci.yml']
+  pull_request:
+    paths: ['packages/**', 'extensions/**', 'apps/**', 'scripts/**', 'tests/**', 'package*.json', '*config*', '.github/workflows/ci.yml']
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - run: npm ci --ignore-scripts
+      - run: npm run check
+      - run: npm run build
+      - run: npm test
+      - run: npm run test:references
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: bash scripts/package.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: Chromium-and-evidence-${{ github.sha }}
+          path: |
+            dist/delivery/
+            evidence/
+          retention-days: 1
+          if-no-files-found: error
+  ios:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: bash scripts/ios.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: iPhone-UNSIGNED-and-evidence-${{ github.sha }}
+          path: |
+            dist/ios/
+            evidence/
+          retention-days: 1
+          if-no-files-found: error

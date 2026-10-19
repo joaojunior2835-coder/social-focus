@@ -1,0 +1,1 @@
+export default [{ignores:['dist/**','node_modules/**','apps/ios/Generated/**','playwright-report/**','test-results/**']},{files:['**/*.mjs','**/*.js'],languageOptions:{ecmaVersion:'latest',sourceType:'module'},rules:{'no-unreachable':'error','no-constant-condition':'error','no-debugger':'error','no-dupe-keys':'error'}}];

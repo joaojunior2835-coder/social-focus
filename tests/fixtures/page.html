@@ -1,0 +1,7 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><title>Sanitized social fixture</title></head><body>
+<main><h1 data-testid="profile">Test profile</h1><div id="private-message">SANITIZED FIXTURE</div><nav><a id="inbox" href="/direct/inbox/">Inbox</a><a id="reel" href="/reel/test/">Watch</a><a id="story" href="/stories/test/1/">Story</a></nav>
+<div id="draft"><input id="upload" type="file" accept="video/*"><video id="preview" controls></video></div>
+<script>
+document.getElementById('upload').addEventListener('change',()=>{document.getElementById('preview').src=URL.createObjectURL(document.getElementById('upload').files[0]);});
+Object.defineProperty(document.getElementById('private-message'),'textContent',{get(){throw new Error('Private message text inspected');},set(){throw new Error('Private message changed');}});
+</script></main></body></html>

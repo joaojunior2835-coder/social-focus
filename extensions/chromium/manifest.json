@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Social Focus",
+  "version": "0.1.0",
+  "description": "Use messages, profiles and creation intentionally. Block Instagram and TikTok consumption surfaces.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.instagram.com/*",
+    "*://*.tiktok.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.instagram.com/*",
+        "*://*.tiktok.com/*"
+      ],
+      "js": [
+        "navigation.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://*.instagram.com/*",
+        "*://*.tiktok.com/*"
+      ],
+      "css": [
+        "start.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

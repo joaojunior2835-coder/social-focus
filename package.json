@@ -1,0 +1,25 @@
+{
+  "name": "social-focus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit && eslint . && prettier --check packages extensions scripts tests apps/ios/*.swift --ignore-unknown",
+    "format": "prettier --write packages extensions scripts tests --ignore-unknown",
+    "test": "node --test tests/unit/*.test.mjs",
+    "test:browser": "playwright test",
+    "test:references": "node scripts/references.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "esbuild": "0.25.12",
+    "typescript": "5.9.3",
+    "prettier": "3.6.2",
+    "eslint": "9.39.1"
+  }
+}

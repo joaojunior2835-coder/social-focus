@@ -1,0 +1,10 @@
+node_modules/
+dist/
+apps/ios/Generated/
+apps/ios/SocialFocus.xcodeproj/
+build/
+evidence/
+test-results/
+playwright-report/
+*.ipa
+.DS_Store
