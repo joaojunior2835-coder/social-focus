@@ -18,6 +18,8 @@ jobs:
       - run: npm install --package-lock-only --ignore-scripts
       - run: npm ci --ignore-scripts
       - run: npm run format
+      - run: npm run format
+      - run: npm run check
       - name: Commit lockfile and formatted source on implementation branch
         run: |
           git config user.name 'Social Focus build bot'

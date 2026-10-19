@@ -8,3 +8,5 @@ Status: IN PROGRESS.
 - Pending: CI/build evidence, live-site checks, authenticated workflows, physical iPhone signing/install/launch/session/refresh and Safari validation.
 
 An external blocker is not completion. Next action: execute cloud tests/device builds and fix failures.
+
+Cloud bootstrap succeeded; dependency audit reported zero known vulnerabilities. First validation exposed a formatting issue. Upload previews are being narrowed to file-input creation containers, with a real synthetic WebM selection/decode/playback test and unrelated-video rejection. Safari packaging omits its unused service worker. Device-target build result pending.

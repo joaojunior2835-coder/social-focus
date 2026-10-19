@@ -41,6 +41,7 @@ const manifest = JSON.parse(
 );
 // Safari page-world support is separate from Chromium; device acceptance must verify it.
 manifest.content_scripts[0].world = "MAIN";
+delete manifest.background;
 fs.writeFileSync(
   "dist/safari/manifest.json",
   JSON.stringify(manifest, null, 2),
