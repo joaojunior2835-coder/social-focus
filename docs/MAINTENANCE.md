@@ -1,0 +1,6 @@
+# Rule maintenance and privacy
+Reproduce with a sanitized fixture containing only structural DOM; never copy messages, cookies, profiles or logged-in screenshots. Add a failing regression in tests/unit or tests/integration; change shared classifier/selectors; run CI on an implementation branch; review artifacts before updating main. Unknown routes fail closed. A known blocked route stays blocked regardless of selector drift.
+
+One document observer batches relevant structural mutations. No textContent reads of platform pages, no fetch interception, no message/cookie/token collection, no analytics. Diagnostics expose only fixed platform/decision/reason codes, rule version and counters; never URLs, query strings or account handles. The project stores only boolean filter settings. Sessions belong to WebKit/browser storage and are not exported.
+
+Known limits: selectors can drift; toggles/extension removal/native apps are bypasses; social providers can restrict mobile web messaging/posting; profile media and DM video consumption may be suppressed; external links are outside the extension's platform scope. iPhone host asks before opening an external destination, clearly unfiltered. Safari remains experimental until physical signing and functional tests pass.

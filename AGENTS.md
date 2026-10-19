@@ -1,0 +1,2 @@
+# Project rules
+Keep shared route decisions in packages/filtering-core. Preserve default consumption blocking and upload preview tests. Never read or log cookies, message text, credentials, or private screenshots. No backend or paid infrastructure. Use standard public-repository GitHub runners only. Never weaken tests to bypass a defect. Keep unsigned device artifacts clearly labeled. Device and authenticated tests stay pending until actually performed. Use implementation branches and record evidence in PROGRESS.md.

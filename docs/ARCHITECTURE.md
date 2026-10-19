@@ -1,0 +1,10 @@
+# Architecture
+Small independent components: TypeScript route/DOM filtering core bundled as JavaScript, Manifest V3 Chromium extension, SwiftUI host with persistent WKWebView, separate Safari app extension. Swift uses JavaScriptCore to call the same pure route classifier before navigation. WebKit injects the bundled filtering engine at document start in every frame. No Metro, remote script rules, server, cookies inspection or cloud sync.
+
+OpenSocials demonstrates persistent mobile webview sessions but brings React Native, cookie inspection, remote filter fetches and 100ms polling we do not need. FocusTube demonstrates route checks and batched DOM work but includes unrelated platforms and permissive modes. We inspected both; no source was copied. Native Swift has fewer runtime dependencies for this single-platform shell.
+
+Filtering is layered: document-start CSS hides the unclassified document, route gate blocks known consumption and unknown platform routes, capturing click guards stop blocked links, a page-world history hook signals SPA navigation, popstate/pageshow restore decisions, and one batched MutationObserver handles changing links/overlays/video surfaces. No aggressive interval polling. A safe overlay is used instead of redirects, preventing redirect loops. Blocked route classification does not depend on selectors. No platform CDN/API domain blocking.
+
+Allowlisted upload routes retain video previews; other platform pages suppress consuming video and structurally identified story/reel/feed surfaces. DMs are never text-scanned. Structural filtering may hide shared video attachments; this intentional conservative limitation does not make DMs fully validated. Profiles remain navigable while consumption links/media are hidden. People search is provided by the host/popup as direct profile lookup; broad recommendation search routes stay blocked.
+
+Settings are separate browser.storage.local / UserDefaults stores. Safari uses its own storage, with no App Groups, FamilyControls, ManagedSettings, DeviceActivity or native messaging dependency. Native app UI modifications are unsupported by the public sandbox model.

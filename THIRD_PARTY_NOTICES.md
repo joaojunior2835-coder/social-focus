@@ -1,0 +1,8 @@
+# Reference source and dependency audit
+Inspected 2026-10-20:
+- OpenSocials https://github.com/liamperritt/opensocials at ac16dcb23adb2dc7407ccee12f546a5cea4ef2de, GPL-3.0. Inspected App.tsx (React Native WebView session/navigation/injection) and Config.ts (Instagram redirects/selectors), repository tree/test structure. Observed cookie-based session inspection, remote selectors and 100ms polling. Those are not imported. No OpenSocials code/assets copied or adapted, so no GPL code is relicensed.
+- FocusTube https://github.com/malekwael229/FocusTube at f26d4181698e3ea709059ad2f49e65ec11d800de, MIT. Inspected content-ig.js, content-tt.js, chrome-manifest.json and regression tests; locale-normalized TikTok paths, feed/video guarding, batched mutation checks and Instagram permalink overlay handling informed requirements. No source/assets copied or adapted. Its advertised live features are not assumed valid.
+
+Independent implementation is MIT. CI records dependency inventory and `npm audit` output. Build/test-only dependencies: TypeScript (Apache-2.0), esbuild (MIT), Playwright (Apache-2.0), Prettier (MIT), ESLint (MIT). Transitive dependencies and exact integrity hashes are in package-lock.json. These are not shipped as app runtime SDKs. Ruby xcodeproj is not used; project generation uses Python standard library. No analytics, advertising or external runtime SDKs.
+
+Reference behavior probes in CI run relevant reference route functions at the pinned SHA and report limitations separately from our tests. They do not establish authenticated/live compatibility of either upstream project.
