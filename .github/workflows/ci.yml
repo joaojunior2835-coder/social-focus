@@ -2,7 +2,7 @@ name: Validate and package Social Focus
 on:
   workflow_dispatch:
   push:
-    branches: [main, 'codex/**']
+    branches: [main]
     paths: ['packages/**', 'extensions/**', 'apps/**', 'scripts/**', 'tests/**', 'package*.json', '*config*', '.github/workflows/ci.yml']
   pull_request:
     paths: ['packages/**', 'extensions/**', 'apps/**', 'scripts/**', 'tests/**', 'package*.json', '*config*', '.github/workflows/ci.yml']
@@ -53,6 +53,7 @@ jobs:
       - run: npm run build
       - run: swift scripts/native-core.swift
       - run: bash scripts/ios.sh
+      - run: bash scripts/simulator.sh
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
