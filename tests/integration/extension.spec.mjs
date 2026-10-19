@@ -215,8 +215,8 @@ test("engine has bounded observer work and never inspects private message text",
 });
 
 test("unchanged Instagram inbox route permits only a selected local draft preview", async () => {
-  const page = await visit('https://www.instagram.com/direct/inbox/');
-  await expect(page.locator('#preview')).toBeHidden();
+  const page = await visit("https://www.instagram.com/direct/inbox/");
+  await expect(page.locator("#preview")).toBeHidden();
   const bytes = await page.evaluate(async () => {
     const canvas = document.createElement("canvas");
     canvas.width = 32;
@@ -245,16 +245,32 @@ test("unchanged Instagram inbox route permits only a selected local draft previe
     return out;
   });
 
-  await page.locator('#upload').setInputFiles({name:'local-draft.webm',mimeType:'video/webm',buffer:Buffer.from(bytes)});
-  await expect(page.locator('#preview')).toBeVisible();
-  await expect.poll(()=>page.locator('#preview').evaluate(v=>v.readyState)).toBeGreaterThanOrEqual(2);
-  await page.locator('#preview').evaluate(v=>{v.loop=true;return v.play();});
-  await expect.poll(()=>page.locator('#preview').evaluate(v=>v.paused)).toBe(false);
-  await page.evaluate(()=>{const v=document.createElement('video');v.id='outside-draft';v.src=document.getElementById('preview').src;document.querySelector('main').append(v);});
-  await expect(page.locator('#outside-draft')).toBeHidden();
-  await page.evaluate(()=>history.pushState({},'', '/reel/other/'));
-  await expect(page.locator('#sf-gate')).toBeVisible();
-  await expect(page.locator('#preview')).toBeHidden();
+  await page.locator("#upload").setInputFiles({
+    name: "local-draft.webm",
+    mimeType: "video/webm",
+    buffer: Buffer.from(bytes),
+  });
+  await expect(page.locator("#preview")).toBeVisible();
+  await expect
+    .poll(() => page.locator("#preview").evaluate((v) => v.readyState))
+    .toBeGreaterThanOrEqual(2);
+  await page.locator("#preview").evaluate((v) => {
+    v.loop = true;
+    return v.play();
+  });
+  await expect
+    .poll(() => page.locator("#preview").evaluate((v) => v.paused))
+    .toBe(false);
+  await page.evaluate(() => {
+    const v = document.createElement("video");
+    v.id = "outside-draft";
+    v.src = document.getElementById("preview").src;
+    document.querySelector("main").append(v);
+  });
+  await expect(page.locator("#outside-draft")).toBeHidden();
+  await page.evaluate(() => history.pushState({}, "", "/reel/other/"));
+  await expect(page.locator("#sf-gate")).toBeVisible();
+  await expect(page.locator("#preview")).toBeHidden();
   await page.close();
 });
 test("unauthenticated live smoke uses actual extension and records limits", async () => {
@@ -284,7 +300,11 @@ test("unauthenticated live smoke uses actual extension and records limits", asyn
     } catch (e) {
       status = "network-or-platform-unavailable";
     }
-    if (httpStatus >= 200 && httpStatus < 400 && /\/(reel|video)\//.test(page.url())) {
+    if (
+      httpStatus >= 200 &&
+      httpStatus < 400 &&
+      /\/(reel|video)\//.test(page.url())
+    ) {
       await expect(page.locator("#sf-gate")).toBeVisible();
     }
     results.push({

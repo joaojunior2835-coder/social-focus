@@ -41,8 +41,10 @@ if (!window.__socialFocus && classify(location.href).platform !== "external") {
     const scope = v.closest(previewScope);
     if (!scope || d.blocked || v.closest("a[href]")) return false;
     const input = scope.querySelector<HTMLInputElement>('input[type="file"]');
-    const source = (v as HTMLMediaElement).currentSrc || v.getAttribute('src') || '';
-    const localDraft = /^(blob:|data:video\/)/.test(source) && !!input?.files?.length;
+    const source =
+      (v as HTMLMediaElement).currentSrc || v.getAttribute("src") || "";
+    const localDraft =
+      /^(blob:|data:video\/)/.test(source) && !!input?.files?.length;
     return d.upload || localDraft;
   }
   function css(d: ReturnType<typeof classify>) {
@@ -78,10 +80,10 @@ if (!window.__socialFocus && classify(location.href).platform !== "external") {
       selectors.push(
         'iframe[src*="instagram.com"]',
         'iframe[src*="tiktok.com"]',
-        'iframe[srcdoc]',
+        "iframe[srcdoc]",
         'iframe[src^="blob:"]',
       );
-      selectors.push('video:not([data-sf-preview])');
+      selectors.push("video:not([data-sf-preview])");
     }
     return `html[data-sf-blocked] body>:not(#sf-gate){display:none!important} #sf-gate{display:none!important} html[data-sf-blocked] #sf-gate{display:block!important;box-sizing:border-box;position:fixed;inset:0;overflow:auto;padding:12vh 8vw;background:#101c20;color:#f0f3ee;z-index:2147483647;font:18px/1.6 system-ui} #sf-gate a{color:#9be6c1} ${selectors.length ? selectors.join(",") + "{visibility:hidden!important;pointer-events:none!important}" : ""}`;
   }
@@ -112,10 +114,14 @@ if (!window.__socialFocus && classify(location.href).platform !== "external") {
       else if (!block && a.hasAttribute("data-sf-link"))
         a.removeAttribute("data-sf-link");
     }
-    for (const v of document.querySelectorAll<HTMLVideoElement>("video,audio")) {
+    for (const v of document.querySelectorAll<HTMLVideoElement>(
+      "video,audio",
+    )) {
       const preview = isPreview(v, d);
-      if (preview && !v.hasAttribute('data-sf-preview')) v.setAttribute('data-sf-preview','');
-      else if (!preview && v.hasAttribute('data-sf-preview')) v.removeAttribute('data-sf-preview');
+      if (preview && !v.hasAttribute("data-sf-preview"))
+        v.setAttribute("data-sf-preview", "");
+      else if (!preview && v.hasAttribute("data-sf-preview"))
+        v.removeAttribute("data-sf-preview");
       if (d.blocked || (config.reels && !preview)) {
         if (!v.paused) v.pause();
         if (v.autoplay) v.autoplay = false;
