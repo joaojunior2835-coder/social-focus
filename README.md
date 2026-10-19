@@ -1,4 +1,7 @@
 # Social Focus
+
+> **SCOPE SUPERSEDED — product development stopped.** The user now requires selective blocking inside the original Instagram and TikTok iPhone apps. The browser, Safari and desktop implementations below are preserved historical work and are not accepted deliverables. See [revised scope](docs/SCOPE.md). No installation or authentication is requested for those browser products.
+
 Intentional Instagram and TikTok browsing: messages, profiles and creation without consumption feeds.
 
 **ENGINEERING READY — DEVICE VALIDATION PENDING. Physical iPhone installation, Safari filtering and authenticated workflows remain unverified.**

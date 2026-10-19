@@ -1,20 +1,10 @@
 # Progress — 2026-10-20
-Status: ENGINEERING READY — DEVICE VALIDATION PENDING.
+Status: NATIVE-APP FEASIBILITY REVIEW IN PROGRESS. Browser product development STOPPED by explicit revised user instruction.
 
-Implementation is committed. Tested source: `f11ece4a5cd6cf3e00b843861afccb72d41189fe`.
-Passing applicable CI: https://github.com/joaojunior2835-coder/social-focus/actions/runs/39336275940
-Evidence: docs/EVIDENCE.md and docs/evidence/engineering.json.
+Required: selectively prevent Reels/Stories/Explore or TikTok consumption within the OFFICIAL native iPhone apps, while DMs, profiles, settings and posting/previews remain usable. Standard iOS, public APIs, no modified binaries, interception, extra spending or paid Developer membership. Browser/replacement apps and whole-app shields are rejected substitutes.
 
-Delivered: shared TypeScript filters; MV3 Chromium extension; independent SwiftUI/WKWebView browser; separate Safari target; pinned cloud builds; unsigned ARM64 iOS device IPAs; checksums; Windows installation/refresh documentation; MIT license and reference/dependency audit. No permanent Windows development checkout, paid runner, paid signing service, backend or added AI API usage.
+Preserved state: 5f297e8572fc6e270ee3ed17d1f91402c9b239ad on main, including all source/history/docs. Historical engineering build f11ece4a5cd6cf3e00b843861afccb72d41189fe passed CI 39336275940; its draft release and artifacts are retained only as historical work, not proof of native-app blocking.
 
-Validation: 56 unit tests, 10 browser tests, 8 native bridge assertions; both device builds/package inspection; standalone release launch in iPhone Simulator; public unauthenticated route gates on both sites. Zero known dependency vulnerabilities at the recorded run.
+Stopped redundant run 39337089917 and disabled project build/bootstrap workflows. No source code or repository was deleted. No new repository or UI redesign is authorized.
 
-Reference probes reproduced missing TikTok story coverage in FocusTube's pinned classifier and lack of individual-Reel matching in OpenSocials' pinned Reels redirect list. Our tests cover those independently. No upstream source/assets were copied.
-
-Remaining external gates:
-1. User installs AltServer/AltStore and personally signs/installs browser-only IPA (issue #1). Exact iPhone model/iOS remains unknown. Registry inventory did not find AltServer/iTunes; iCloud Outlook alone does not establish installer prerequisites.
-2. User authenticates directly and validates sessions, DMs/profiles/settings/account switching and supported draft/upload flows. No real message/post without separate approval.
-3. User verifies signing/installation/permissions and actual filtering for the separate Safari extension (issue #2). If unsupported, an explicit scope decision is required.
-4. User verifies refresh/re-signing and its effect on session data, plus network/restart recovery.
-
-This is not COMPLETE. Original native apps cannot be selectively modified through an established public API. All further product acceptance depends on a physical device and authenticated user interaction; no credentials or pairing/signing material belong in GitHub or CI.
+Next action: focused current official-Apple and implementation review, including SocialLite iPhone, Screen Time APIs, accessibility/automation and network filtering. Do not request phone installation or resume development unless a credible supported native-app mechanism justifies a minimal proof of concept. A supported NO-GO ends product development; it is not a completed app.

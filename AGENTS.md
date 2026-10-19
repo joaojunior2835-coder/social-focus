@@ -1,2 +1,5 @@
 # Project rules
 Keep shared route decisions in packages/filtering-core. Preserve default consumption blocking and upload preview tests. Never read or log cookies, message text, credentials, or private screenshots. No backend or paid infrastructure. Use standard public-repository GitHub runners only. Never weaken tests to bypass a defect. Keep unsigned device artifacts clearly labeled. Device and authenticated tests stay pending until actually performed. Use implementation branches and record evidence in PROGRESS.md.
+
+## Superseding mission
+Product development of all browser components is stopped. Apply docs/SCOPE.md. Work only on native-app feasibility; no browser substitute, new repository or further interface redesign. A justified NO-GO is an accepted feasibility outcome, not an app completion.
