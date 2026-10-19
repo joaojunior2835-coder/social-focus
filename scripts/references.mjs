@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import vm from "node:vm";
 import assert from "node:assert/strict";
+import {transformSync} from "esbuild";
 const refs = [
   ["liamperritt/opensocials", "ac16dcb23adb2dc7407ccee12f546a5cea4ef2de"],
   ["malekwael229/FocusTube", "f26d4181698e3ea709059ad2f49e65ec11d800de"],
@@ -33,7 +34,16 @@ probes.push({
   blocked: sandbox.subject.isBlockablePath("/@test/story/1"),
   finding: "Story path requires additional coverage in our core.",
 });
-assert.ok(config.includes("https://www.instagram.com/stories/"));
+
+const matcher=app.match(/function urlMatchesRule\([\s\S]*?\n\}/)[0];
+const openSandbox={module:{exports:{}}};vm.createContext(openSandbox);
+vm.runInContext(transformSync(config,{loader:'ts',format:'cjs'}).code,openSandbox);
+vm.runInContext(transformSync(matcher+';globalThis.matchRule=urlMatchesRule;',{loader:'ts',format:'iife'}).code,openSandbox);
+const igConfig=openSandbox.module.exports.default.instagram;
+const matches=(url,rules)=>rules.some(rule=>openSandbox.matchRule(url,rule));
+assert.equal(matches('https://www.instagram.com/stories/test/1/',igConfig.defaultRedirects.stories),true);
+probes.push({reference:'OpenSocials',storyRedirect:true,individualReelMatchedByReelsRedirect:matches('https://www.instagram.com/reel/test/',igConfig.defaultRedirects.reels),finding:'Pinned upstream route functions executed; our core adds independent direct-Reel coverage.'});
+
 assert.ok(app.includes("setInterval("));
 assert.ok(ig.includes("getReelPermalinkArticle"));
 probes.push({

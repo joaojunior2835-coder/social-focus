@@ -10,3 +10,5 @@ Status: IN PROGRESS.
 An external blocker is not completion. Next action: execute cloud tests/device builds and fix failures.
 
 Cloud bootstrap succeeded; dependency audit reported zero known vulnerabilities. First validation exposed a formatting issue. Upload previews are being narrowed to file-input creation containers, with a real synthetic WebM selection/decode/playback test and unrelated-video rejection. Safari packaging omits its unused service worker. Device-target build result pending.
+
+Both unsigned physical-device targets compiled and package inspection passed at c540f48e5cde1013b5ff27ecd1b3754e1ceefbe0 (Xcode 16.4 / iPhoneOS 18.5). Browser unit/reference tests and 7/8 integration tests passed. The generated single-frame draft fixture ended immediately; replacing with multi-frame synthetic media while retaining preview playback and unrelated-video assertions. Public live route-gate smoke observed Instagram/TikTok HTTP 200 destinations; Instagram login network check was unavailable. No authenticated compatibility claim. Physical acceptance tracked in issues #1 and #2.
