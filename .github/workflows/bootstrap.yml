@@ -1,0 +1,27 @@
+name: Bootstrap locked dependencies
+on: workflow_dispatch
+permissions:
+  contents: write
+concurrency:
+  group: bootstrap-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lock:
+    if: github.repository == 'joaojunior2835-coder/social-focus' && github.ref == 'refs/heads/codex/implementation'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - run: npm install --package-lock-only --ignore-scripts
+      - run: npm ci --ignore-scripts
+      - run: npm run format
+      - name: Commit lockfile and formatted source on implementation branch
+        run: |
+          git config user.name 'Social Focus build bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package-lock.json packages extensions scripts tests
+          git diff --cached --quiet || git commit -m 'Pin dependency tree and format source'
+          git push origin HEAD:codex/implementation
