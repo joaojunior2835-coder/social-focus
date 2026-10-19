@@ -213,6 +213,50 @@ test("engine has bounded observer work and never inspects private message text",
   expect(errors).toEqual([]);
   await page.close();
 });
+
+test("unchanged Instagram inbox route permits only a selected local draft preview", async () => {
+  const page = await visit('https://www.instagram.com/direct/inbox/');
+  await expect(page.locator('#preview')).toBeHidden();
+  const bytes = await page.evaluate(async () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    const stream = canvas.captureStream(10);
+    const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    const chunks = [];
+    recorder.ondataavailable = (e) => chunks.push(e.data);
+    const done = new Promise(
+      (resolve) =>
+        (recorder.onstop = async () =>
+          resolve(
+            Array.from(new Uint8Array(await new Blob(chunks).arrayBuffer())),
+          )),
+    );
+    recorder.start();
+    for (let frame = 0; frame < 12; frame++) {
+      ctx.fillStyle = frame % 2 ? "green" : "blue";
+      ctx.fillRect(0, 0, 32, 32);
+      await new Promise((resolve) => setTimeout(resolve, 60));
+    }
+    recorder.stop();
+    const out = await done;
+    stream.getTracks().forEach((t) => t.stop());
+    return out;
+  });
+
+  await page.locator('#upload').setInputFiles({name:'local-draft.webm',mimeType:'video/webm',buffer:Buffer.from(bytes)});
+  await expect(page.locator('#preview')).toBeVisible();
+  await expect.poll(()=>page.locator('#preview').evaluate(v=>v.readyState)).toBeGreaterThanOrEqual(2);
+  await page.locator('#preview').evaluate(v=>{v.loop=true;return v.play();});
+  await expect.poll(()=>page.locator('#preview').evaluate(v=>v.paused)).toBe(false);
+  await page.evaluate(()=>{const v=document.createElement('video');v.id='outside-draft';v.src=document.getElementById('preview').src;document.querySelector('main').append(v);});
+  await expect(page.locator('#outside-draft')).toBeHidden();
+  await page.evaluate(()=>history.pushState({},'', '/reel/other/'));
+  await expect(page.locator('#sf-gate')).toBeVisible();
+  await expect(page.locator('#preview')).toBeHidden();
+  await page.close();
+});
 test("unauthenticated live smoke uses actual extension and records limits", async () => {
   test.setTimeout(75000);
   await context.unroute("https://**/*");
@@ -232,12 +276,6 @@ test("unauthenticated live smoke uses actual extension and records limits", asyn
       });
       httpStatus = response?.status();
       const protectedPage = await page.locator("#sf-gate").isVisible();
-      if (
-        httpStatus >= 200 &&
-        httpStatus < 400 &&
-        /\/(reel|video)\//.test(page.url())
-      )
-        await expect(page.locator("#sf-gate")).toBeVisible();
       status = protectedPage
         ? "route-gate-visible"
         : (await page.locator("html[data-sf-ready]").count())
@@ -245,6 +283,9 @@ test("unauthenticated live smoke uses actual extension and records limits", asyn
           : "filter-not-observed";
     } catch (e) {
       status = "network-or-platform-unavailable";
+    }
+    if (httpStatus >= 200 && httpStatus < 400 && /\/(reel|video)\//.test(page.url())) {
+      await expect(page.locator("#sf-gate")).toBeVisible();
     }
     results.push({
       case: url.includes("/accounts/login") ? "login-page" : "blocked-route",
