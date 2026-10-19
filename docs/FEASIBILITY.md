@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED.** This file concerns the stopped browser product. It does not demonstrate the revised original-native-app requirement. Follow [the native feasibility decision](NATIVE_APP_FEASIBILITY.md). No browser-product installation or device validation is requested.
+
 # Feasibility — verified 2026-10-20
 Documentation support is not an installation result. No physical phone has been tested.
 

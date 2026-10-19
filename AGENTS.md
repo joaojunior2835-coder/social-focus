@@ -3,3 +3,6 @@ Keep shared route decisions in packages/filtering-core. Preserve default consump
 
 ## Superseding mission
 Product development of all browser components is stopped. Apply docs/SCOPE.md. Work only on native-app feasibility; no browser substitute, new repository or further interface redesign. A justified NO-GO is an accepted feasibility outcome, not an app completion.
+
+## Final native feasibility decision
+NO-GO as of 2026-10-20. Feasibility review complete, product development stopped. Follow docs/NATIVE_APP_FEASIBILITY.md. No further implementation, browser substitute, installation request or build run without a new explicit user instruction and a credible compliant native mechanism.

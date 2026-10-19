@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED.** This file concerns the stopped browser product. It does not demonstrate the revised original-native-app requirement. Follow [the native feasibility decision](NATIVE_APP_FEASIBILITY.md). No browser-product installation or device validation is requested.
+
 # Architecture
 Small independent components: TypeScript route/DOM filtering core bundled as JavaScript, Manifest V3 Chromium extension, SwiftUI host with persistent WKWebView, separate Safari app extension. Swift uses JavaScriptCore to call the same pure route classifier before navigation. WebKit injects the bundled filtering engine at document start in every frame. No Metro, remote script rules, server, cookies inspection or cloud sync.
 

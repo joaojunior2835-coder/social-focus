@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED.** This file concerns the stopped browser product. It does not demonstrate the revised original-native-app requirement. Follow [the native feasibility decision](NATIVE_APP_FEASIBILITY.md). No browser-product installation or device validation is requested.
+
 # Windows → iPhone install and refresh
 Verified against official sources on 2026-10-20; actual device procedure remains pending.
 

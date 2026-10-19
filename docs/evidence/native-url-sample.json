@@ -1,0 +1,10 @@
+{
+  "source": "https://docs-assets.developer.apple.com/published/ab6517c07cf8/FilteringTrafficByURL.zip",
+  "verified": "2026-10-20",
+  "sha256": "f77eb013b334790a6e42c44f529170119588d2c90f9cc97a7b44d6519cd310d2",
+  "filesInspected": [
+    "SimpleURLFilter/SimpleURLFilterExtension/SimpleURLFilterExtension.entitlements",
+    "SimpleURLFilter/SimpleURLFilter/SimpleURLFilter.entitlements"
+  ],
+  "finding": "Official sample uses Network Extension URL-filter-provider entitlement and a URL dataset; no native Instagram/TikTok section policy."
+}

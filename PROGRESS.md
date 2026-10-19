@@ -1,10 +1,14 @@
 # Progress — 2026-10-20
-Status: NATIVE-APP FEASIBILITY REVIEW IN PROGRESS. Browser product development STOPPED by explicit revised user instruction.
+Status: **STOPPED — NATIVE-APP SCOPE NO-GO.** Feasibility review complete; no completed native blocker is claimed.
 
-Required: selectively prevent Reels/Stories/Explore or TikTok consumption within the OFFICIAL native iPhone apps, while DMs, profiles, settings and posting/previews remain usable. Standard iOS, public APIs, no modified binaries, interception, extra spending or paid Developer membership. Browser/replacement apps and whole-app shields are rejected substitutes.
+Revised required behavior and stop/go rules are in docs/SCOPE.md. Evidence and mechanism matrix are in docs/NATIVE_APP_FEASIBILITY.md; official capability/sample inspections are in docs/evidence/native-capabilities.json and native-url-sample.json.
 
-Preserved state: 5f297e8572fc6e270ee3ed17d1f91402c9b239ad on main, including all source/history/docs. Historical engineering build f11ece4a5cd6cf3e00b843861afccb72d41189fe passed CI 39336275940; its draft release and artifacts are retained only as historical work, not proof of native-app blocking.
+Decision: no reviewed supported mechanism meets selective blocking inside original Instagram AND TikTok iPhone apps while preserving DMs/profiles/settings/posting/previews under standard iOS, public APIs and no paid membership/additional spending. Screen Time shields address apps/domains/categories; its privileged capabilities and Network Extension provisioning are unavailable to free Personal Teams. New iOS 26 URL filtering was considered explicitly. The inspected cross-app automation implementation uses private APIs. SocialLite's iPhone description is an inside-SocialLite experience with whole native-app locks and temporary post unlocks; its native selective-blocking FAQ claim is Android-specific.
 
-Stopped redundant run 39337089917 and disabled project build/bootstrap workflows. No source code or repository was deleted. No new repository or UI redesign is authorized.
+No native proof of concept or physical-device acceptance passed. A missing phone or research tool was NOT used as proof of impossibility. No device details, credentials, permissions or installation are needed to resolve the documented prerequisite failures.
 
-Next action: focused current official-Apple and implementation review, including SocialLite iPhone, Screen Time APIs, accessibility/automation and network filtering. Do not request phone installation or resume development unless a credible supported native-app mechanism justifies a minimal proof of concept. A supported NO-GO ends product development; it is not a completed app.
+Preserved: repository, original code, historical commits, passing browser-engineering run 39336275940 (source f11ece4a5cd6cf3e00b843861afccb72d41189fe), and draft release assets. These are superseded historical results, not acceptance of the revised product.
+
+Stopped: standalone browser/Safari/desktop development, redundant run 39337089917, and both project build workflows (disabled_manually). Historical installation/validation issues are closed as not planned, not successfully completed. Scope and decision recorded on codex/native-feasibility and main. No code or repository deleted, no new repository or interface redesign, no additional spending.
+
+Next action: NONE. Do not continue development. Reopen only for specific new evidence of a compliant supported native-app mechanism or an explicit subsequent scope change.

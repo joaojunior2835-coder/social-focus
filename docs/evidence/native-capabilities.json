@@ -1,0 +1,24 @@
+{
+  "source": "https://developer.apple.com/help/account/reference/supported-capabilities-ios",
+  "verified": "2026-10-20",
+  "rows": [
+    {
+      "capability": "Family Controls (development) *",
+      "ADP": true,
+      "ADEP": false,
+      "freeAppleDeveloper": false
+    },
+    {
+      "capability": "Network extensions",
+      "ADP": true,
+      "ADEP": true,
+      "freeAppleDeveloper": false
+    },
+    {
+      "capability": "Personal VPN",
+      "ADP": true,
+      "ADEP": true,
+      "freeAppleDeveloper": false
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED.** This file concerns the stopped browser product. It does not demonstrate the revised original-native-app requirement. Follow [the native feasibility decision](NATIVE_APP_FEASIBILITY.md). No browser-product installation or device validation is requested.
+
 # Engineering evidence — 2026-10-20
 Status: ENGINEERING READY — DEVICE VALIDATION PENDING. This is not completion.
 
