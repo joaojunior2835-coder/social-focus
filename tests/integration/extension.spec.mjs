@@ -138,10 +138,10 @@ test("file selection and draft preview work only on upload routes", async () => 
           )),
     );
     recorder.start();
-    for (let frame=0;frame<12;frame++) {
-      ctx.fillStyle=frame%2 ? 'green' : 'blue';
-      ctx.fillRect(0,0,32,32);
-      await new Promise(resolve=>setTimeout(resolve,60));
+    for (let frame = 0; frame < 12; frame++) {
+      ctx.fillStyle = frame % 2 ? "green" : "blue";
+      ctx.fillRect(0, 0, 32, 32);
+      await new Promise((resolve) => setTimeout(resolve, 60));
     }
     recorder.stop();
     const out = await done;
@@ -157,7 +157,10 @@ test("file selection and draft preview work only on upload routes", async () => 
   await expect
     .poll(() => page.locator("#preview").evaluate((v) => v.readyState))
     .toBeGreaterThanOrEqual(2);
-  await page.locator("#preview").evaluate((v) => {v.loop=true;return v.play();});
+  await page.locator("#preview").evaluate((v) => {
+    v.loop = true;
+    return v.play();
+  });
   await expect
     .poll(() => page.locator("#preview").evaluate((v) => v.paused))
     .toBe(false);
@@ -229,7 +232,12 @@ test("unauthenticated live smoke uses actual extension and records limits", asyn
       });
       httpStatus = response?.status();
       const protectedPage = await page.locator("#sf-gate").isVisible();
-      if (httpStatus >= 200 && httpStatus < 400 && /\/(reel|video)\//.test(page.url())) await expect(page.locator("#sf-gate")).toBeVisible();
+      if (
+        httpStatus >= 200 &&
+        httpStatus < 400 &&
+        /\/(reel|video)\//.test(page.url())
+      )
+        await expect(page.locator("#sf-gate")).toBeVisible();
       status = protectedPage
         ? "route-gate-visible"
         : (await page.locator("html[data-sf-ready]").count())
